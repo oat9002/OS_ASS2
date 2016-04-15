@@ -26,7 +26,6 @@
 #include <linux/module.h>
 
 #include <asm/tlbflush.h>
-#include "internal.h"
 
 #include <linux/init.h>		/* __init and __exit macroses */
 #include <linux/kernel.h>	/* KERN_INFO macros */
@@ -52,20 +51,6 @@ struct buffer {
 	char *data, *end;
 	char *read_ptr;
 	unsigned long size;
-};
-
-static struct file_operations memaudit_fops = {
-	.owner = THIS_MODULE,
-	.open = memaudit_open,
-	.read = memaudit_read,
-	.write = memaudit_write,
-	.release = memaudit_close,
-};
-
-static struct miscdevice memaudit_misc_device = {
-	.minor = MISC_DYNAMIC_MINOR,
-	.name = "memaudit",
-	.fops = &memaudit_fops
 };
 
 static struct buffer *buffer_alloc(unsigned long size)
@@ -100,6 +85,122 @@ static void buffer_free(struct buffer *buffer)
 	kfree(buffer->data);
 	kfree(buffer);
 }
+
+static int memaudit_open(struct inode *inode, struct file *file)
+{
+	struct buffer *buf;
+	int err = 0;
+
+	/*
+	 * Real code can use inode to get pointer to the private
+	 * device state.
+	 */
+
+	buf = buffer_alloc(buffer_size);
+	if (unlikely(!buf)) {
+		err = -ENOMEM;
+		goto out;
+	}
+
+	file->private_data = buf;
+
+ out:
+	return err;
+}
+
+static ssize_t memaudit_read(struct file *file, char __user * out, size_t size, loff_t * off)
+{
+	struct buffer *buf = file->private_data;
+	ssize_t result;
+
+	if (mutex_lock_interruptible(&buf->lock)) {
+		result = -ERESTARTSYS;
+		goto out;
+	}
+
+	while (buf->read_ptr == buf->end) {
+		mutex_unlock(&buf->lock);
+		if (file->f_flags & O_NONBLOCK) {
+			result = -EAGAIN;
+			goto out;
+		}
+		if (wait_event_interruptible(buf->read_queue, buf->read_ptr != buf->end)) {
+			result = -ERESTARTSYS;
+			goto out;
+		}
+		if (mutex_lock_interruptible(&buf->lock)) {
+			result = -ERESTARTSYS;
+			goto out;
+		}
+	}
+
+	size = min(size, (size_t) (buf->end - buf->read_ptr));
+	if (copy_to_user(out, buf->read_ptr, size)) {
+		result = -EFAULT;
+		goto out_unlock;
+	}
+
+	buf->read_ptr += size;
+	result = size;
+
+ out_unlock:
+	mutex_unlock(&buf->lock);
+ out:
+	return result;
+}
+
+static ssize_t memaudit_write(struct file *file, const char __user * in, size_t size, loff_t * off)
+{
+	struct buffer *buf = file->private_data;
+	ssize_t result;
+
+	if (size > buffer_size) {
+		result = -EFBIG;
+		goto out;
+	}
+
+	if (mutex_lock_interruptible(&buf->lock)) {
+		result = -ERESTARTSYS;
+		goto out;
+	}
+
+	if (copy_from_user(buf->data, in, size)) {
+		result = -EFAULT;
+		goto out_unlock;
+	}
+
+	buf->end = buf->data + size;
+	buf->read_ptr = buf->data;
+
+	wake_up_interruptible(&buf->read_queue);
+
+	result = size;
+ out_unlock:
+	mutex_unlock(&buf->lock);
+ out:
+	return result;
+}
+
+static int memaudit_close(struct inode *inode, struct file *file)
+{
+	struct buffer *buf = file->private_data;
+	buffer_free(buf);
+	return 0;
+}
+
+static struct file_operations memaudit_fops = {
+	.owner = THIS_MODULE,
+	.open = memaudit_open,
+	.read = memaudit_read,
+	.write = memaudit_write,
+	.release = memaudit_close
+};
+
+static struct miscdevice memaudit_misc_device = {
+	.minor = MISC_DYNAMIC_MINOR,
+	.name = "memaudit",
+	.fops = &memaudit_fops
+};
 
 static int __init memaudit_init(void)
 {

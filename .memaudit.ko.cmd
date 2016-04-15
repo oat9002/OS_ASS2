@@ -1,0 +1,1 @@
+cmd_/home/oat/Desktop/OS/OS_ASS2/memaudit.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/oat/Desktop/OS/OS_ASS2/memaudit.ko /home/oat/Desktop/OS/OS_ASS2/memaudit.o /home/oat/Desktop/OS/OS_ASS2/memaudit.mod.o
