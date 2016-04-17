@@ -1,0 +1,1 @@
+cmd_/home/oat/Desktop/OS/OS_ASS2/ksm.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/oat/Desktop/OS/OS_ASS2/ksm.ko /home/oat/Desktop/OS/OS_ASS2/ksm.o /home/oat/Desktop/OS/OS_ASS2/ksm.mod.o
