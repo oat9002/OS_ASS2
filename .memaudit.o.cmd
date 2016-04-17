@@ -3,6 +3,10 @@ cmd_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := gcc -Wp,-MD,/home/oat/Desktop/OS/
 source_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := /home/oat/Desktop/OS/OS_ASS2/memaudit.c
 
 deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
+    $(wildcard include/config/numa.h) \
+    $(wildcard include/config/sysfs.h) \
+    $(wildcard include/config/migration.h) \
+    $(wildcard include/config/memory/hotremove.h) \
   include/linux/errno.h \
   include/uapi/linux/errno.h \
   arch/x86/include/uapi/asm/errno.h \
@@ -19,7 +23,6 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/stack/growsup.h) \
-    $(wildcard include/config/numa.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/sparsemem.h) \
     $(wildcard include/config/sparsemem/vmemmap.h) \
@@ -356,7 +359,6 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
   include/linux/page-flags-layout.h \
   include/generated/bounds.h \
   include/linux/memory_hotplug.h \
-    $(wildcard include/config/memory/hotremove.h) \
     $(wildcard include/config/have/arch/nodedata/extension.h) \
     $(wildcard include/config/have/bootmem/info/node.h) \
   include/linux/notifier.h \
@@ -409,7 +411,6 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
   include/linux/workqueue.h \
     $(wildcard include/config/debug/objects/work.h) \
     $(wildcard include/config/freezer.h) \
-    $(wildcard include/config/sysfs.h) \
   include/linux/timer.h \
     $(wildcard include/config/timer/stats.h) \
     $(wildcard include/config/debug/objects/timers.h) \
@@ -560,7 +561,6 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/debug/tlbflush.h) \
     $(wildcard include/config/debug/vm/vmacache.h) \
   include/linux/vm_event_item.h \
-    $(wildcard include/config/migration.h) \
     $(wildcard include/config/memory/balloon.h) \
     $(wildcard include/config/balloon/compaction.h) \
   include/linux/fs.h \
@@ -908,6 +908,9 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
   arch/x86/include/asm/tlbflush.h \
+  /home/oat/Desktop/OS/OS_ASS2/internal.h \
+    $(wildcard include/config/debug/memory/init.h) \
+    $(wildcard include/config/arch/want/batched/unmap/tlb/flush.h) \
   include/linux/miscdevice.h \
   include/uapi/linux/major.h \
 
