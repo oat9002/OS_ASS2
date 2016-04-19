@@ -1,0 +1,59 @@
+#include <linux/module.h>
+#include <linux/printk.h>
+#include <linux/sched.h>
+#include <asm/io.h>
+
+/*static struct page *(struct mm_struct *mm,unsigned long virt)
+{
+    pgd_t *pgd = pgd_offset(mm, virt);
+    if (pgd_none(*pgd) || pgd_bad(*pgd))
+        return 0;
+    pud = pud_offset(pgd, virt);
+    if (pud_none(*pud) || pud_bad(*pud))
+        return 0;
+    pmd = pmd_offset(pud, virt);
+    if (pmd_none(*pmd) || pmd_bad(*pmd))
+        return 0;
+    if (!(pte = pte_offset_map(pmd, virt)))
+        return 0;
+    if (!(page = pte_page(*pte)))
+        return 0;
+    phys = page_to_phys(page);
+    pte_unmap(pte);
+    return phys;
+};*/
+
+static void print_total_page(struct task_struct *task,unsigned long *count_page){
+	struct vm_area_struct *vma = 0;
+    unsigned long vpage;
+    if (task->mm && task->mm->mmap)
+        for (vma = task->mm->mmap; vma; vma = vma->vm_next){
+            for (vpage = vma->vm_start; vpage < vma->vm_end; vpage += PAGE_SIZE){
+                //unsigned long phys = virt_to_phys(vpage);
+                //printk("%lu information\n",vpage);
+                *count_page += 1;
+            }
+        }
+    }
+
+
+    static int __init ex_init(void)
+    {
+        struct task_struct *task;
+        unsigned long count_page = 0;
+        printk("count page start %lu \n",count_page);
+        for_each_process(task){
+           pr_info("%s [%d] information\n", task->comm, task->pid);
+           print_total_page(task,&count_page);
+       }
+       printk("count page stop %lu \n",count_page);
+       return 0;
+   }
+
+   static void __exit ex_fini(void)
+   {
+       pr_info("%s\n","Bye module");
+   }
+
+   module_init(ex_init);
+   module_exit(ex_fini);

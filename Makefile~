@@ -1,4 +1,8 @@
-obj-m := ksm.o
+SRCS   = memaudit.c ksm.c
+OBJS   = $(SRCS:.c=.o)
+
+obj-m += $(OBJS)
+
 KDIR := /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
 default:

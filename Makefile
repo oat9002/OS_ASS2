@@ -1,5 +1,8 @@
-obj-m := memaudit.o
-KDIR := /lib/modules/$(shell uname -r)/build
-PWD := $(shell pwd)
-default:
-	$(MAKE) -C $(KDIR) M=$(PWD) modules
+obj-m += memaudit.o
+CFLAGS_memaudit.o += -DDEBUG
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean

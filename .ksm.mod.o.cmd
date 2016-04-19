@@ -3,7 +3,6 @@ cmd_/home/oat/Desktop/OS/OS_ASS2/ksm.mod.o := gcc -Wp,-MD,/home/oat/Desktop/OS/O
 source_/home/oat/Desktop/OS/OS_ASS2/ksm.mod.o := /home/oat/Desktop/OS/OS_ASS2/ksm.mod.c
 
 deps_/home/oat/Desktop/OS/OS_ASS2/ksm.mod.o := \
-    $(wildcard include/config/module/unload.h) \
   include/linux/module.h \
     $(wildcard include/config/modules.h) \
     $(wildcard include/config/sysfs.h) \
@@ -18,6 +17,7 @@ deps_/home/oat/Desktop/OS/OS_ASS2/ksm.mod.o := \
     $(wildcard include/config/event/tracing.h) \
     $(wildcard include/config/ftrace/mcount/record.h) \
     $(wildcard include/config/livepatch.h) \
+    $(wildcard include/config/module/unload.h) \
     $(wildcard include/config/constructors.h) \
     $(wildcard include/config/debug/set/module/ronx.h) \
   include/linux/list.h \
