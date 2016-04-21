@@ -1,37 +1,92 @@
 #include <linux/module.h>
 #include <linux/printk.h>
 #include <linux/sched.h>
-#include <asm/io.h>
+#include <linux/mm.h>
+#include <asm/page.h>
+#include <asm/pgtable.h>
+#include <linux/ksm.h>
+//#include <linux/hugetlb.h>
+//#include <linux/highmem.h>
+//#include <linux/ioport.h>
+//#include <linux/kernel.h>
+//#include <linux/page-flags.h>
 
-/*static struct page *(struct mm_struct *mm,unsigned long virt)
+
+
+static struct page *walk_page_table(struct mm_struct *memory,unsigned long addr,struct task_struct *task)
 {
-    pgd_t *pgd = pgd_offset(mm, virt);
+    pgd_t *pgd;
+    pte_t *ptep, pte;
+    pud_t *pud;
+    pmd_t *pmd;
+
+    struct page *page = NULL;
+    struct mm_struct *mm = memory;
+
+    pgd = pgd_offset(mm, addr);
     if (pgd_none(*pgd) || pgd_bad(*pgd))
-        return 0;
-    pud = pud_offset(pgd, virt);
+        goto out;
+    //printk(KERN_NOTICE "Valid pgd");
+
+    pud = pud_offset(pgd, addr);
     if (pud_none(*pud) || pud_bad(*pud))
-        return 0;
-    pmd = pmd_offset(pud, virt);
+        goto out;
+    //printk(KERN_NOTICE "Valid pud");
+
+    pmd = pmd_offset(pud, addr);
     if (pmd_none(*pmd) || pmd_bad(*pmd))
-        return 0;
-    if (!(pte = pte_offset_map(pmd, virt)))
-        return 0;
-    if (!(page = pte_page(*pte)))
-        return 0;
-    phys = page_to_phys(page);
-    pte_unmap(pte);
-    return phys;
-};*/
+        goto out;
+    //printk(KERN_NOTICE "Valid pmd");
+
+    ptep = pte_offset_map(pmd, addr);
+    if (!ptep)
+        goto out;
+    pte = *ptep;
+
+    page = pte_page(pte);
+    if (page){
+        //if(pte_write(pte)){
+            //printk(KERN_INFO "page can read @ \n");
+            //printk(KERN_INFO "page frame struct is page write@ %lx\n", pte_write(pte));
+        char *addr1;
+        addr1 = kmap_atomic(page);
+        printk(KERN_INFO "page frame struct is page val PID [%d]  \n",task->pid);
+        //
+        printk(KERN_INFO "page frame struct is page val %s \n", addr1);
+        //printk(KERN_INFO "page frame struct is page val@ %lx\n", addr1);
+        kunmap_atomic(addr1);
+   //print_code(mm->start_code,mm->end_code);
+    }
+    pte_unmap(ptep); 
+    out:
+    return page;
+}
+
+static void findword(unsigned long vpage,unsigned long start_addr,unsigned long stop_addr,struct task_struct *task,
+    unsigned long *count_page){
+  if(vpage>=start_addr && vpage <=stop_addr){
+                    struct page *page_pte = walk_page_table(task->mm,vpage,task);
+                        if(page_pte){
+                            printk("page can read \n");
+                            *count_page += 1;
+                        }
+                        else{
+                            printk("page cannot read \n");
+                        }
+                }
+}
 
 static void print_total_page(struct task_struct *task,unsigned long *count_page){
 	struct vm_area_struct *vma = 0;
     unsigned long vpage;
+    //pointer_t buf;
+    //uint32_t sz;
     if (task->mm && task->mm->mmap)
         for (vma = task->mm->mmap; vma; vma = vma->vm_next){
             for (vpage = vma->vm_start; vpage < vma->vm_end; vpage += PAGE_SIZE){
-                //unsigned long phys = virt_to_phys(vpage);
-                //printk("%lu information\n",vpage);
-                *count_page += 1;
+                findword(vpage,task->mm->start_code,task->mm->end_code,task,count_page);
+                findword(vpage,task->mm->start_data,task->mm->end_data,task,count_page);
+                findword(vpage,task->mm->start_brk,task->mm->brk,task,count_page);
             }
         }
     }
@@ -43,17 +98,17 @@ static void print_total_page(struct task_struct *task,unsigned long *count_page)
         unsigned long count_page = 0;
         printk("count page start %lu \n",count_page);
         for_each_process(task){
-           pr_info("%s [%d] information\n", task->comm, task->pid);
-           print_total_page(task,&count_page);
-       }
-       printk("count page stop %lu \n",count_page);
-       return 0;
-   }
+           //pr_info("%s PID [%d] information\n", task->comm, task->pid);
+                print_total_page(task,&count_page);
+     }
+     printk("count page stop %lu \n",count_page);
+     return 0;
+ }
 
-   static void __exit ex_fini(void)
-   {
-       pr_info("%s\n","Bye module");
-   }
+ static void __exit ex_fini(void)
+ {
+     pr_info("%s\n","Bye module");
+ }
 
-   module_init(ex_init);
-   module_exit(ex_fini);
+ module_init(ex_init);
+ module_exit(ex_fini);

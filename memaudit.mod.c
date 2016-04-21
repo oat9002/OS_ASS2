@@ -18,12 +18,11 @@ static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
 	{ 0x6c15661c, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x8afcc76c, __VMLINUX_SYMBOL_STR(noop_llseek) },
 	{ 0x792b8d85, __VMLINUX_SYMBOL_STR(misc_deregister) },
-	{ 0xcec25ecf, __VMLINUX_SYMBOL_STR(misc_register) },
 	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
-	{ 0x9003406, __VMLINUX_SYMBOL_STR(init_task) },
-	{ 0x40d836d8, __VMLINUX_SYMBOL_STR(kmem_cache_destroy) },
-	{ 0xaf08e37a, __VMLINUX_SYMBOL_STR(kmem_cache_create) },
+	{ 0xcec25ecf, __VMLINUX_SYMBOL_STR(misc_register) },
+	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
 	{ 0x5f37af31, __VMLINUX_SYMBOL_STR(__mutex_init) },
 	{ 0x9e88526, __VMLINUX_SYMBOL_STR(__init_waitqueue_head) },
 	{ 0xb4f22726, __VMLINUX_SYMBOL_STR(kmem_cache_alloc_trace) },
@@ -38,7 +37,6 @@ __attribute__((section("__versions"))) = {
 	{ 0x8ca05263, __VMLINUX_SYMBOL_STR(mutex_unlock) },
 	{ 0x4f6b400b, __VMLINUX_SYMBOL_STR(_copy_from_user) },
 	{ 0x1ad241df, __VMLINUX_SYMBOL_STR(mutex_lock_interruptible) },
-	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
 	{ 0xbdfb6dbb, __VMLINUX_SYMBOL_STR(__fentry__) },
 };
 
@@ -48,4 +46,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "4025237C2BE2162989A38F2");
+MODULE_INFO(srcversion, "CC61FBCB44ED16D18B43913");

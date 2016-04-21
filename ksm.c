@@ -40,7 +40,7 @@
  #include <linux/numa.h>
 
 
-  #include <linux/kernel_stat.h>
+ #include <linux/kernel_stat.h>
  #include <linux/swapops.h>
  #include <linux/init.h>
  #include <linux/buffer_head.h>

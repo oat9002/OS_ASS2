@@ -3,43 +3,6 @@ cmd_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := gcc -Wp,-MD,/home/oat/Desktop/OS/
 source_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := /home/oat/Desktop/OS/OS_ASS2/memaudit.c
 
 deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
-    $(wildcard include/config/numa.h) \
-  include/linux/init.h \
-    $(wildcard include/config/broken/rodata.h) \
-    $(wildcard include/config/lto.h) \
-  include/linux/compiler.h \
-    $(wildcard include/config/sparse/rcu/pointer.h) \
-    $(wildcard include/config/trace/branch/profiling.h) \
-    $(wildcard include/config/profile/all/branches.h) \
-    $(wildcard include/config/enable/must/check.h) \
-    $(wildcard include/config/enable/warn/deprecated.h) \
-    $(wildcard include/config/kprobes.h) \
-  include/linux/compiler-gcc.h \
-    $(wildcard include/config/arch/supports/optimized/inlining.h) \
-    $(wildcard include/config/optimize/inlining.h) \
-    $(wildcard include/config/gcov/kernel.h) \
-    $(wildcard include/config/arch/use/builtin/bswap.h) \
-  include/uapi/linux/types.h \
-  arch/x86/include/uapi/asm/types.h \
-  include/uapi/asm-generic/types.h \
-  include/asm-generic/int-ll64.h \
-  include/uapi/asm-generic/int-ll64.h \
-  arch/x86/include/uapi/asm/bitsperlong.h \
-  include/asm-generic/bitsperlong.h \
-    $(wildcard include/config/64bit.h) \
-  include/uapi/asm-generic/bitsperlong.h \
-  include/uapi/linux/posix_types.h \
-  include/linux/stddef.h \
-  include/uapi/linux/stddef.h \
-  arch/x86/include/asm/posix_types.h \
-    $(wildcard include/config/x86/32.h) \
-  arch/x86/include/uapi/asm/posix_types_64.h \
-  include/uapi/asm-generic/posix_types.h \
-  include/linux/types.h \
-    $(wildcard include/config/uid16.h) \
-    $(wildcard include/config/lbdaf.h) \
-    $(wildcard include/config/arch/dma/addr/t/64bit.h) \
-    $(wildcard include/config/phys/addr/t/64bit.h) \
   include/linux/module.h \
     $(wildcard include/config/modules.h) \
     $(wildcard include/config/sysfs.h) \
@@ -59,6 +22,39 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/debug/set/module/ronx.h) \
   include/linux/list.h \
     $(wildcard include/config/debug/list.h) \
+  include/linux/types.h \
+    $(wildcard include/config/uid16.h) \
+    $(wildcard include/config/lbdaf.h) \
+    $(wildcard include/config/arch/dma/addr/t/64bit.h) \
+    $(wildcard include/config/phys/addr/t/64bit.h) \
+    $(wildcard include/config/64bit.h) \
+  include/uapi/linux/types.h \
+  arch/x86/include/uapi/asm/types.h \
+  include/uapi/asm-generic/types.h \
+  include/asm-generic/int-ll64.h \
+  include/uapi/asm-generic/int-ll64.h \
+  arch/x86/include/uapi/asm/bitsperlong.h \
+  include/asm-generic/bitsperlong.h \
+  include/uapi/asm-generic/bitsperlong.h \
+  include/uapi/linux/posix_types.h \
+  include/linux/stddef.h \
+  include/uapi/linux/stddef.h \
+  include/linux/compiler.h \
+    $(wildcard include/config/sparse/rcu/pointer.h) \
+    $(wildcard include/config/trace/branch/profiling.h) \
+    $(wildcard include/config/profile/all/branches.h) \
+    $(wildcard include/config/enable/must/check.h) \
+    $(wildcard include/config/enable/warn/deprecated.h) \
+    $(wildcard include/config/kprobes.h) \
+  include/linux/compiler-gcc.h \
+    $(wildcard include/config/arch/supports/optimized/inlining.h) \
+    $(wildcard include/config/optimize/inlining.h) \
+    $(wildcard include/config/gcov/kernel.h) \
+    $(wildcard include/config/arch/use/builtin/bswap.h) \
+  arch/x86/include/asm/posix_types.h \
+    $(wildcard include/config/x86/32.h) \
+  arch/x86/include/uapi/asm/posix_types_64.h \
+  include/uapi/asm-generic/posix_types.h \
   include/linux/poison.h \
     $(wildcard include/config/illegal/pointer/value.h) \
   include/uapi/linux/const.h \
@@ -167,6 +163,9 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/early/printk.h) \
     $(wildcard include/config/printk.h) \
     $(wildcard include/config/dynamic/debug.h) \
+  include/linux/init.h \
+    $(wildcard include/config/broken/rodata.h) \
+    $(wildcard include/config/lto.h) \
   include/linux/kern_levels.h \
   include/linux/cache.h \
     $(wildcard include/config/arch/has/cache/line/size.h) \
@@ -326,6 +325,7 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/highmem.h) \
     $(wildcard include/config/zone/dma.h) \
     $(wildcard include/config/zone/dma32.h) \
+    $(wildcard include/config/numa.h) \
     $(wildcard include/config/deferred/struct/page/init.h) \
     $(wildcard include/config/pm/sleep.h) \
     $(wildcard include/config/cma.h) \
@@ -586,105 +586,6 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/have/mod/arch/specific.h) \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
-  include/linux/mm.h \
-    $(wildcard include/config/ppc.h) \
-    $(wildcard include/config/parisc.h) \
-    $(wildcard include/config/metag.h) \
-    $(wildcard include/config/stack/growsup.h) \
-    $(wildcard include/config/shmem.h) \
-    $(wildcard include/config/debug/vm/rb.h) \
-    $(wildcard include/config/debug/pagealloc.h) \
-    $(wildcard include/config/hugetlbfs.h) \
-  include/linux/debug_locks.h \
-    $(wildcard include/config/debug/locking/api/selftests.h) \
-  include/linux/bit_spinlock.h \
-  include/linux/shrinker.h \
-  include/linux/resource.h \
-  include/uapi/linux/resource.h \
-  arch/x86/include/uapi/asm/resource.h \
-  include/asm-generic/resource.h \
-  include/uapi/asm-generic/resource.h \
-  include/linux/page_ext.h \
-    $(wildcard include/config/page/owner.h) \
-  include/linux/stacktrace.h \
-    $(wildcard include/config/stacktrace.h) \
-    $(wildcard include/config/user/stacktrace/support.h) \
-  arch/x86/include/asm/pgtable.h \
-    $(wildcard include/config/have/arch/soft/dirty.h) \
-  arch/x86/include/asm/pgtable_64.h \
-  include/asm-generic/pgtable.h \
-    $(wildcard include/config/have/arch/huge/vmap.h) \
-  include/linux/page-flags.h \
-    $(wildcard include/config/pageflags/extended.h) \
-    $(wildcard include/config/arch/uses/pg/uncached.h) \
-    $(wildcard include/config/memory/failure.h) \
-    $(wildcard include/config/swap.h) \
-    $(wildcard include/config/ksm.h) \
-  include/linux/huge_mm.h \
-  include/linux/vmstat.h \
-    $(wildcard include/config/vm/event/counters.h) \
-    $(wildcard include/config/debug/tlbflush.h) \
-    $(wildcard include/config/debug/vm/vmacache.h) \
-  include/linux/vm_event_item.h \
-    $(wildcard include/config/migration.h) \
-    $(wildcard include/config/memory/balloon.h) \
-    $(wildcard include/config/balloon/compaction.h) \
-  include/linux/fs.h \
-    $(wildcard include/config/fs/posix/acl.h) \
-    $(wildcard include/config/security.h) \
-    $(wildcard include/config/cgroup/writeback.h) \
-    $(wildcard include/config/ima.h) \
-    $(wildcard include/config/fsnotify.h) \
-    $(wildcard include/config/epoll.h) \
-    $(wildcard include/config/file/locking.h) \
-    $(wildcard include/config/quota.h) \
-    $(wildcard include/config/blk/dev/loop.h) \
-    $(wildcard include/config/fs/dax.h) \
-    $(wildcard include/config/block.h) \
-  include/linux/kdev_t.h \
-  include/uapi/linux/kdev_t.h \
-  include/linux/dcache.h \
-  include/linux/rculist.h \
-  include/linux/rculist_bl.h \
-  include/linux/list_bl.h \
-  include/linux/lockref.h \
-    $(wildcard include/config/arch/use/cmpxchg/lockref.h) \
-  include/linux/path.h \
-  include/linux/list_lru.h \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/radix-tree.h \
-  include/linux/pid.h \
-  include/linux/capability.h \
-  include/uapi/linux/capability.h \
-  include/linux/semaphore.h \
-  include/uapi/linux/fiemap.h \
-  include/linux/migrate_mode.h \
-  include/linux/percpu-rwsem.h \
-  include/linux/blk_types.h \
-    $(wildcard include/config/blk/cgroup.h) \
-    $(wildcard include/config/blk/dev/integrity.h) \
-  include/uapi/linux/fs.h \
-  include/uapi/linux/limits.h \
-  include/linux/quota.h \
-    $(wildcard include/config/quota/netlink/interface.h) \
-  include/linux/percpu_counter.h \
-  include/uapi/linux/dqblk_xfs.h \
-  include/linux/dqblk_v1.h \
-  include/linux/dqblk_v2.h \
-  include/linux/dqblk_qtree.h \
-  include/linux/projid.h \
-  include/uapi/linux/quota.h \
-  include/linux/nfs_fs_i.h \
-  include/linux/fcntl.h \
-  include/uapi/linux/fcntl.h \
-  arch/x86/include/uapi/asm/fcntl.h \
-  include/uapi/asm-generic/fcntl.h \
-  include/linux/mman.h \
-  include/uapi/linux/mman.h \
-  arch/x86/include/uapi/asm/mman.h \
-  include/uapi/asm-generic/mman.h \
-  include/uapi/asm-generic/mman-common.h \
-    $(wildcard include/config/mmap/allow/uninitialized.h) \
   include/linux/sched.h \
     $(wildcard include/config/sched/debug.h) \
     $(wildcard include/config/lockup/detector.h) \
@@ -698,6 +599,7 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/cgroups.h) \
     $(wildcard include/config/inotify/user.h) \
     $(wildcard include/config/fanotify.h) \
+    $(wildcard include/config/epoll.h) \
     $(wildcard include/config/posix/mqueue.h) \
     $(wildcard include/config/keys.h) \
     $(wildcard include/config/perf/events.h) \
@@ -709,11 +611,13 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/rt/group/sched.h) \
     $(wildcard include/config/cgroup/sched.h) \
     $(wildcard include/config/blk/dev/io/trace.h) \
+    $(wildcard include/config/memcg/kmem.h) \
     $(wildcard include/config/compat/brk.h) \
     $(wildcard include/config/virt/cpu/accounting/gen.h) \
     $(wildcard include/config/sysvipc.h) \
     $(wildcard include/config/auditsyscall.h) \
     $(wildcard include/config/rt/mutexes.h) \
+    $(wildcard include/config/block.h) \
     $(wildcard include/config/task/xacct.h) \
     $(wildcard include/config/cpusets.h) \
     $(wildcard include/config/futex.h) \
@@ -725,9 +629,12 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/have/unstable/sched/clock.h) \
     $(wildcard include/config/irq/time/accounting.h) \
     $(wildcard include/config/no/hz/full.h) \
+    $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/have/copy/thread/tls.h) \
   include/uapi/linux/sched.h \
   include/linux/sched/prio.h \
+  include/linux/capability.h \
+  include/uapi/linux/capability.h \
   include/linux/plist.h \
     $(wildcard include/config/debug/pi/list.h) \
   include/linux/cputime.h \
@@ -756,7 +663,9 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
   arch/x86/include/uapi/asm/siginfo.h \
   include/asm-generic/siginfo.h \
   include/uapi/asm-generic/siginfo.h \
+  include/linux/pid.h \
   include/linux/proportions.h \
+  include/linux/percpu_counter.h \
   include/linux/seccomp.h \
     $(wildcard include/config/seccomp.h) \
     $(wildcard include/config/have/arch/seccomp/filter.h) \
@@ -771,8 +680,14 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
   arch/x86/include/generated/asm/unistd_32_ia32.h \
   include/asm-generic/seccomp.h \
   include/uapi/linux/unistd.h \
+  include/linux/rculist.h \
   include/linux/rtmutex.h \
     $(wildcard include/config/debug/rt/mutexes.h) \
+  include/linux/resource.h \
+  include/uapi/linux/resource.h \
+  arch/x86/include/uapi/asm/resource.h \
+  include/asm-generic/resource.h \
+  include/uapi/asm-generic/resource.h \
   include/linux/hrtimer.h \
     $(wildcard include/config/high/res/timers.h) \
     $(wildcard include/config/time/low/res.h) \
@@ -783,6 +698,7 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
   include/linux/latencytop.h \
   include/linux/cred.h \
     $(wildcard include/config/debug/credentials.h) \
+    $(wildcard include/config/security.h) \
   include/linux/key.h \
   include/linux/assoc_array.h \
     $(wildcard include/config/associative/array.h) \
@@ -790,9 +706,12 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/security/selinux.h) \
   include/uapi/linux/magic.h \
   include/linux/cgroup-defs.h \
+  include/uapi/linux/limits.h \
   include/linux/percpu-refcount.h \
+  include/linux/percpu-rwsem.h \
   include/linux/cgroup_subsys.h \
     $(wildcard include/config/cgroup/cpuacct.h) \
+    $(wildcard include/config/blk/cgroup.h) \
     $(wildcard include/config/cgroup/device.h) \
     $(wildcard include/config/cgroup/freezer.h) \
     $(wildcard include/config/cgroup/net/classid.h) \
@@ -800,7 +719,83 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
     $(wildcard include/config/cgroup/net/prio.h) \
     $(wildcard include/config/cgroup/hugetlb.h) \
     $(wildcard include/config/cgroup/debug.h) \
+  include/linux/mm.h \
+    $(wildcard include/config/ppc.h) \
+    $(wildcard include/config/parisc.h) \
+    $(wildcard include/config/metag.h) \
+    $(wildcard include/config/shmem.h) \
+    $(wildcard include/config/debug/vm/rb.h) \
+    $(wildcard include/config/debug/pagealloc.h) \
+    $(wildcard include/config/hugetlbfs.h) \
+  include/linux/debug_locks.h \
+    $(wildcard include/config/debug/locking/api/selftests.h) \
+  include/linux/bit_spinlock.h \
+  include/linux/shrinker.h \
+  include/linux/page_ext.h \
+    $(wildcard include/config/page/owner.h) \
+  include/linux/stacktrace.h \
+    $(wildcard include/config/stacktrace.h) \
+    $(wildcard include/config/user/stacktrace/support.h) \
+  arch/x86/include/asm/pgtable.h \
+    $(wildcard include/config/have/arch/soft/dirty.h) \
+  arch/x86/include/asm/pgtable_64.h \
+  include/asm-generic/pgtable.h \
+    $(wildcard include/config/have/arch/huge/vmap.h) \
+  include/linux/page-flags.h \
+    $(wildcard include/config/pageflags/extended.h) \
+    $(wildcard include/config/arch/uses/pg/uncached.h) \
+    $(wildcard include/config/memory/failure.h) \
+    $(wildcard include/config/swap.h) \
+    $(wildcard include/config/ksm.h) \
+  include/linux/huge_mm.h \
+  include/linux/vmstat.h \
+    $(wildcard include/config/vm/event/counters.h) \
+    $(wildcard include/config/debug/tlbflush.h) \
+    $(wildcard include/config/debug/vm/vmacache.h) \
+  include/linux/vm_event_item.h \
+    $(wildcard include/config/migration.h) \
+    $(wildcard include/config/memory/balloon.h) \
+    $(wildcard include/config/balloon/compaction.h) \
+  include/linux/ksm.h \
   include/linux/pagemap.h \
+  include/linux/fs.h \
+    $(wildcard include/config/fs/posix/acl.h) \
+    $(wildcard include/config/cgroup/writeback.h) \
+    $(wildcard include/config/ima.h) \
+    $(wildcard include/config/fsnotify.h) \
+    $(wildcard include/config/file/locking.h) \
+    $(wildcard include/config/quota.h) \
+    $(wildcard include/config/blk/dev/loop.h) \
+    $(wildcard include/config/fs/dax.h) \
+  include/linux/kdev_t.h \
+  include/uapi/linux/kdev_t.h \
+  include/linux/dcache.h \
+  include/linux/rculist_bl.h \
+  include/linux/list_bl.h \
+  include/linux/lockref.h \
+    $(wildcard include/config/arch/use/cmpxchg/lockref.h) \
+  include/linux/path.h \
+  include/linux/list_lru.h \
+  include/linux/radix-tree.h \
+  include/linux/semaphore.h \
+  include/uapi/linux/fiemap.h \
+  include/linux/migrate_mode.h \
+  include/linux/blk_types.h \
+    $(wildcard include/config/blk/dev/integrity.h) \
+  include/uapi/linux/fs.h \
+  include/linux/quota.h \
+    $(wildcard include/config/quota/netlink/interface.h) \
+  include/uapi/linux/dqblk_xfs.h \
+  include/linux/dqblk_v1.h \
+  include/linux/dqblk_v2.h \
+  include/linux/dqblk_qtree.h \
+  include/linux/projid.h \
+  include/uapi/linux/quota.h \
+  include/linux/nfs_fs_i.h \
+  include/linux/fcntl.h \
+  include/uapi/linux/fcntl.h \
+  arch/x86/include/uapi/asm/fcntl.h \
+  include/uapi/asm-generic/fcntl.h \
   include/linux/highmem.h \
   include/linux/uaccess.h \
   arch/x86/include/asm/uaccess.h \
@@ -870,89 +865,8 @@ deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o := \
   include/uapi/linux/cgroupstats.h \
   include/uapi/linux/taskstats.h \
   include/linux/seq_file.h \
-  include/linux/jhash.h \
-  include/linux/unaligned/packed_struct.h \
-  include/linux/delay.h \
-  arch/x86/include/asm/delay.h \
-  include/asm-generic/delay.h \
-  include/linux/kthread.h \
-  include/linux/memory.h \
-    $(wildcard include/config/memory/hotplug/sparse.h) \
-    $(wildcard include/config/mem/block/size.h) \
-  include/linux/node.h \
-  include/linux/device.h \
-    $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/pinctrl.h) \
-    $(wildcard include/config/dma/cma.h) \
-    $(wildcard include/config/of.h) \
-    $(wildcard include/config/devtmpfs.h) \
-    $(wildcard include/config/sysfs/deprecated.h) \
-  include/linux/klist.h \
-  include/linux/pinctrl/devinfo.h \
-  include/linux/pinctrl/consumer.h \
-  include/linux/pinctrl/pinctrl-state.h \
-  include/linux/ratelimit.h \
-  arch/x86/include/asm/device.h \
-    $(wildcard include/config/x86/dev/dma/ops.h) \
-    $(wildcard include/config/intel/iommu.h) \
-    $(wildcard include/config/amd/iommu.h) \
-  include/linux/pm_wakeup.h \
-  include/linux/mmu_notifier.h \
-  include/linux/swap.h \
-    $(wildcard include/config/frontswap.h) \
-  include/linux/ksm.h \
-  include/linux/hashtable.h \
-  include/linux/hash.h \
-    $(wildcard include/config/arch/has/fast/multiplier.h) \
-  include/linux/freezer.h \
-  include/linux/oom.h \
-  include/uapi/linux/oom.h \
-  include/linux/kernel_stat.h \
-  include/linux/interrupt.h \
-    $(wildcard include/config/irq/forced/threading.h) \
-    $(wildcard include/config/generic/irq/probe.h) \
-  include/linux/swapops.h \
-  include/linux/buffer_head.h \
-  include/linux/backing-dev.h \
-  include/linux/blkdev.h \
-    $(wildcard include/config/blk/dev/bsg.h) \
-    $(wildcard include/config/blk/dev/throttling.h) \
-    $(wildcard include/config/bounce.h) \
-  include/uapi/linux/major.h \
-  include/linux/genhd.h \
-    $(wildcard include/config/fail/make/request.h) \
-    $(wildcard include/config/solaris/x86/partition.h) \
-    $(wildcard include/config/bsd/disklabel.h) \
-    $(wildcard include/config/unixware/disklabel.h) \
-    $(wildcard include/config/minix/subpartition.h) \
-  include/linux/backing-dev-defs.h \
-    $(wildcard include/config/debug/fs.h) \
-  include/linux/flex_proportions.h \
-  include/linux/mempool.h \
-  include/linux/bio.h \
-  include/linux/ioprio.h \
-  include/linux/iocontext.h \
-  include/linux/bsg.h \
-  include/uapi/linux/bsg.h \
-  include/linux/scatterlist.h \
-    $(wildcard include/config/debug/sg.h) \
-    $(wildcard include/config/need/sg/dma/length.h) \
-    $(wildcard include/config/arch/has/sg/chain.h) \
-  include/linux/elevator.h \
-  include/linux/writeback.h \
-  include/linux/blk-cgroup.h \
-  include/linux/u64_stats_sync.h \
-  include/linux/pagevec.h \
-  include/linux/migrate.h \
-  include/linux/mempolicy.h \
-    $(wildcard include/config/tmpfs.h) \
-    $(wildcard include/config/arch/enable/hugepage/migration.h) \
-  include/uapi/linux/mempolicy.h \
-  arch/x86/include/asm/tlbflush.h \
-  /home/oat/Desktop/OS/OS_ASS2/internal.h \
-    $(wildcard include/config/debug/memory/init.h) \
-    $(wildcard include/config/arch/want/batched/unmap/tlb/flush.h) \
   include/linux/miscdevice.h \
+  include/uapi/linux/major.h \
 
 /home/oat/Desktop/OS/OS_ASS2/memaudit.o: $(deps_/home/oat/Desktop/OS/OS_ASS2/memaudit.o)
 
